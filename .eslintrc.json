@@ -1,0 +1,28 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es2021": true
+    },
+    "extends": "standard",
+    "parserOptions": {
+        "ecmaVersion": "latest"
+    },
+    "rules": {
+        "semi": 0,
+        "prefer-const": "off",
+        "array-callback-return": "off",
+        "prefer-promise-reject-errors": "off"
+    },
+    "overrides": [
+        {
+        "files": ["*.html"],
+        "parserOptions": {
+            "parser": "@babel/eslint-parser"
+        },
+        "rules": {
+            "no-unused-vars": "off" // Menonaktifkan aturan "no-unused-vars" untuk file HTML
+        }
+        }
+    ]
+}

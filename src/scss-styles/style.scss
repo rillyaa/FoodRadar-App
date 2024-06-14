@@ -1,0 +1,154 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Poppins';
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  $primary-color: #FFEC9E;
+  $secondary-color: #FFC436;
+  $accent-color: #B67352;
+  
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    padding: 8px;
+    background-color: #bf1722;
+    color: white;
+    z-index: 101;
+    
+    &:focus {
+      top: 0;
+    }
+  }
+  
+  .content {
+    background-color: $primary-color;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .container-banner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  .jumbotron {
+    img {
+      filter: brightness(40%);
+      width: 100vw;
+      height: 40vh; 
+      object-fit: cover;
+    }
+    
+    @media screen and (min-width: 576px) {
+      img {
+        height: 50vh;
+      }
+    }
+    
+    @media screen and (min-width: 1000px) {
+      img {
+        height: 60vh;
+      }
+    }
+    
+    .text-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: $secondary-color;
+      font-size: 10px;
+      font-weight: bold;
+      text-align: center;
+      width: 70%;
+      
+      @media screen and (min-width: 576px) {
+        font-size: 14px;
+      }
+      
+      @media screen and (min-width: 1000px) {
+        font-size: 20px;
+      }
+      
+      p:last-child {
+        color: white;
+      }
+    }
+  }
+  
+  
+  h3 {
+    font-size: 12px;
+    padding: 20px;
+    display: flex; 
+    flex: 1; 
+    justify-content: center;
+    
+    @media screen and (min-width: 576px) {
+      font-size: 13px;
+    }
+    
+    @media screen and (min-width: 1000px) {
+      font-size: 20px;
+    }
+  }
+  
+  hr {
+    position: relative;
+    width: 95%;
+    margin: 0 auto;
+    border: none;
+    height: 1px; 
+    color: $accent-color; 
+    background-color: $accent-color;
+  }
+
+  #app {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #app restaurant-list, 
+  #app restaurant-detail, 
+  #app favorite-restaurants {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  footer {
+    text-align: center;
+    background-color: #FFC94A;
+    padding: 20px;
+    
+    @media screen and (min-width: 576px) {
+      font-size: 13px;
+    }
+    
+    @media screen and (min-width: 1000px) {
+      font-size: 20px;
+    }
+  }
+  
