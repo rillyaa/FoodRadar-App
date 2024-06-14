@@ -108,15 +108,16 @@ class FavoriteRestaurants extends HTMLElement {
           const restaurantItem = document.createElement('div');
           restaurantItem.classList.add('restaurant-item');
           restaurantItem.innerHTML = `
-            <img class="restaurant-image" src="${CONFIG.BASE_IMAGE_URL}small/${restaurant.pictureId}" alt="${restaurant.name}">
+            <img class="restaurant-image" src="${CONFIG.BASE_IMAGE_URL}small/${restaurant.pictureId}" alt="${restaurant.name}" tabindex="0">
             <div class="restaurant-info">
-              <h2 class="restaurant-name">${restaurant.name}</h2>
-              <p class="restaurant-city">City: ${restaurant.city}</p>
-              <p class="restaurant-rating">Rating: ${restaurant.rating}</p>
-              <p class="restaurant-description">${restaurant.description}</p>
-              <a href="#detail/${restaurant.id}" class="detail-link">View Details</a>
+              <h2 class="restaurant-name" tabindex="0">${restaurant.name}</h2>
+              <p class="restaurant-city" tabindex="0">City: ${restaurant.city}</p>
+              <p class="restaurant-rating" tabindex="0">Rating: ${restaurant.rating}</p>
+              <p class="restaurant-description" tabindex="0">${restaurant.description}</p>
+              <a href="#detail/${restaurant.id}" class="detail-link" tabindex="0">View Details</a>
             </div>
           `;
+          restaurantItem.setAttribute('tabindex', '0');
           container.appendChild(restaurantItem);
         });
       }

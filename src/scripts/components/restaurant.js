@@ -49,8 +49,6 @@ class RestaurantBox extends HTMLElement {
         margin-right: 5px;
       }
       .restaurant-image {
-        width: 100%;
-        height: 170px;
         border-radius: 8px;
         margin-bottom: 10px;
       }
@@ -123,13 +121,13 @@ class RestaurantBox extends HTMLElement {
           restaurantElement.setAttribute('aria-label', `Restaurant: ${restaurant.name}. Rating: ${restaurant.rating}. Located in ${restaurant.city}.`);
           restaurantElement.innerHTML = `
             <picture>
-              <source media="(min-width: 1000px)" srcset="${CONFIG.BASE_IMAGE_URL}large/${restaurant.pictureId}" loading="lazy">
-              <source media="(min-width: 576px)" srcset="${CONFIG.BASE_IMAGE_URL}medium/${restaurant.pictureId}" loading="lazy">
+              <source media="(min-width: 1000px)" srcset="${CONFIG.BASE_IMAGE_URL}large/${restaurant.pictureId}" loading="lazy" width="100%" height="170px">
+              <source media="(min-width: 576px)" srcset="${CONFIG.BASE_IMAGE_URL}medium/${restaurant.pictureId}" loading="lazy" width="100%" height="170px">
               <img 
                 class="restaurant-image" 
                 src="${CONFIG.BASE_IMAGE_URL}small/${restaurant.pictureId}" 
                 alt="${restaurant.name}" 
-                loading="lazy">
+                loading="lazy" width="100%" height="170px">
             </picture>
             <div class="restaurant-name">${restaurant.name}</div>
             <div class="restaurant-rating"><box-icon name='star' type='solid' color='#FFC100'></box-icon> ${restaurant.rating}</div>
@@ -139,8 +137,18 @@ class RestaurantBox extends HTMLElement {
           restaurantElement.addEventListener('click', () => {
             window.location.hash = `#detail/${restaurant.id}`;
           });
+          restaurantElement.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              window.location.hash = `#detail/${restaurant.id}`;
+            }
+          });
           container.appendChild(restaurantElement);
         });
+      })
+      .catch(error => {
+        loadingIndicator.hideLoading();
+        console.error('Error fetching restaurants:', error);
+        container.innerHTML = '<p>Failed to load restaurants. Please try again later.</p>';
       });
   }
 }

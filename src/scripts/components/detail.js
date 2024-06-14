@@ -281,7 +281,7 @@ class RestaurantDetail extends HTMLElement {
       restaurantElement.setAttribute('role', 'article');
       restaurantElement.setAttribute('aria-label', `Restaurant: ${restaurant.name}. Rating: ${restaurant.rating}. Located in ${restaurant.city}. Address: ${restaurant.address}. Description: ${restaurant.description}`);
       restaurantElement.innerHTML = `
-                <img class="restaurant-image" src="${CONFIG.BASE_IMAGE_URL}medium/${restaurant.pictureId}" alt="${restaurant.name}">
+                <img class="restaurant-image" src="${CONFIG.BASE_IMAGE_URL}medium/${restaurant.pictureId}" alt="${restaurant.name}" width="100%" height="auto">
                 <div class="restaurant-name">${restaurant.name}</div>
                 <div class="restaurant-address">Address: ${restaurant.address}</div>
                 <div class="restaurant-city">City: ${restaurant.city}</div>
@@ -296,7 +296,7 @@ class RestaurantDetail extends HTMLElement {
                         ${restaurant.menus.drinks.map(drink => `<div class="menu-item">${drink.name}</div>`).join('')}
                     </div>
                 </div>
-                <div class="customer-reviews">
+                <div class="customer-reviews" tabindex=0>
                     <h3>Customer Reviews</h3>
                     ${restaurant.customerReviews.map(review => `
                         <div class="review">
@@ -366,6 +366,14 @@ class RestaurantDetail extends HTMLElement {
 
           const reviewsContainer = restaurantElement.querySelector('.customer-reviews');
           reviewsContainer.innerHTML = `<h3>Customer Reviews</h3>${newReviews}`;
+        }
+      });
+
+      // Add keypress event listener for review form
+      reviewForm.addEventListener('keypress', (event) => {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          reviewForm.querySelector('.submit-review').click();
         }
       });
     } catch (error) {

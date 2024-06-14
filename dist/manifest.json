@@ -8,13 +8,13 @@
     "description": "Discover the Best Culinary Sensations Around the World.",
     "icons": [
       {
-        "src": "./images/FoodRadar-96-small.png",
+        "src": "./icon/FoodRadar-96.png",
         "sizes": "96x96",
         "type": "image/png",
         "purpose": "any"
       },
       {
-        "src": "./images/FoodRadar-512-small.png",
+        "src": "./icon/FoodRadar-512.png",
         "sizes": "512x512",
         "type": "image/png",
         "purpose": "any"
